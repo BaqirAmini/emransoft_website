@@ -42,15 +42,15 @@ export function Header() {
           : "bg-transparent"
       )}
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
           <Image
             src="/images/logo/emransoft_logo.png"
             alt="Emransoft"
-            width={72}
-            height={72}
+            width={88}
+            height={88}
             priority
-            className="size-[72px] object-contain"
+            className="size-[88px] object-contain"
           />
         </Link>
 

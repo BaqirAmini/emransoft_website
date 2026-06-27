@@ -3,14 +3,15 @@
 import { useLocale } from "next-intl"
 import { usePathname, useRouter } from "@/i18n/navigation"
 import { useTransition, useState, useRef, useEffect } from "react"
-import { Languages, ChevronDown } from "lucide-react"
+import Image from "next/image"
+import { ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { routing } from "@/i18n/routing"
 
-const localeNames: Record<string, { label: string; flag: string }> = {
-  fa: { label: "دری", flag: "🇦🇫" },
-  en: { label: "English", flag: "🇬🇧" },
-  ps: { label: "پښتو", flag: "🇦🇫" },
+const localeNames: Record<string, { label: string; flag: string; src: string }> = {
+  fa: { label: "دری", flag: "🇦🇫", src: "/images/flags/af.svg" },
+  en: { label: "English", flag: "🇺🇸", src: "/images/flags/us.svg" },
+  ps: { label: "پښتو", flag: "🇦🇫", src: "/images/flags/af.svg" },
 }
 
 export function LanguageSwitcher() {
@@ -53,9 +54,8 @@ export function LanguageSwitcher() {
         aria-label="Switch language"
         aria-expanded={open}
       >
-        <Languages className="size-4" />
-        <span>{current.flag}</span>
-        <span className="hidden sm:inline">{current.label}</span>
+        <Image src={current.src} alt="" width={20} height={15} className="size-5 object-cover rounded-sm" />
+        <span>{current.label}</span>
         <ChevronDown className={cn("size-3.5 transition-transform duration-200", open && "rotate-180")} />
       </button>
 
@@ -82,7 +82,7 @@ export function LanguageSwitcher() {
                     : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                 )}
               >
-                <span className="text-base">{info.flag}</span>
+                <Image src={info.src} alt="" width={20} height={15} className="size-5 object-cover rounded-sm" />
                 <span>{info.label}</span>
                 {isActive && <span className="ms-auto size-1.5 rounded-full bg-blue-600" />}
               </button>

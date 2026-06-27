@@ -18,9 +18,9 @@ export function Footer() {
               <Image
                 src="/images/logo/emransoft_logo.png"
                 alt="Emransoft"
-                width={64}
-                height={64}
-                className="size-16 object-contain"
+                width={80}
+                height={80}
+                className="size-20 object-contain"
               />
             </Link>
             <p className="text-sm leading-relaxed text-slate-400 max-w-xs">

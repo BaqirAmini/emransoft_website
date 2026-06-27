@@ -31,13 +31,13 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
   const isEnglish = locale === "en"
 
   const titles: Record<string, string> = {
-    fa: "عمران سافت | راه‌حل‌های نرم‌افزاری حرفه‌ای برای افغانستان",
+    fa: "عمران سافت | راه حلهای نرم‌افزاری حرفه ای برای افغانستان",
     en: "Emransoft | Professional Software Solutions for Afghanistan",
     ps: "عمران سافت | د افغانستان لپاره مسلکي سافټویر حل لارې",
   }
 
   const descriptions: Record<string, string> = {
-    fa: "ساخت نرم‌افزارهای قابل اعتماد که به مراکز بهداشتی و کسب‌وکارها در سراسر افغانستان قدرت می‌بخشد.",
+    fa: "ساخت نرم‌افزارهای قابل اعتماد که به مراکز بهداشتی و کسب و کارها در سراسر افغانستان قدرت می‌بخشد.",
     en: "Building reliable software that empowers healthcare centers and businesses across Afghanistan.",
     ps: "د باور وړ سافټویر جوړول چې د روغتیا پاملرنې مرکزونو او سوداګرۍ ته په ټول افغانستان کې ځواک ورکوي.",
   }
