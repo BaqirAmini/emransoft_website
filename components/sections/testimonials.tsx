@@ -25,7 +25,7 @@ export function Testimonials() {
           >
             <Card className="h-full flex flex-col">
               <Quote className="size-8 text-blue-200 mb-4" />
-              <p className="text-slate-600 text-sm leading-relaxed flex-1">
+              <p className="text-slate-600 text-sm leading-relaxed flex-1" dir="auto">
                 &ldquo;{testimonial.content}&rdquo;
               </p>
               <div className="flex gap-1 mt-4 mb-4">
