@@ -2,22 +2,24 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { useTranslations } from "next-intl"
+import { useTranslations, useLocale } from "next-intl"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight, Monitor } from "lucide-react"
 import { Section, SectionHeader } from "@/components/ui/section"
 import { Button } from "@/components/ui/button"
 
 const screenshots = [
-  { id: "crown-dashboard", title: "Crown Dashboard", description: "Complete clinic overview at a glance", color: "from-blue-600 to-blue-400", label: "C", image: "/images/screenshots/crown-dashboard.png" },
-  { id: "crown-patients", title: "Patient Management", description: "Efficient patient record management", color: "from-emerald-600 to-emerald-400", label: "P", image: null },
-  { id: "crown-billing", title: "Billing & Invoicing", description: "Professional billing with installment tracking", color: "from-violet-600 to-violet-400", label: "B", image: null },
-  { id: "labra-orders", title: "Labra Order Management", description: "Streamlined laboratory workflow", color: "from-amber-600 to-amber-400", label: "L", image: null },
-  { id: "tajviz-prescription", title: "Tajviz Prescriptions", description: "Modern digital prescription system", color: "from-rose-600 to-rose-400", label: "T", image: null },
+  { id: "crown-dashboard", title: "Crown Dashboard", description: "Complete clinic overview at a glance", image: "/images/screenshots/crown-dashboard.png" },
+  { id: "crown-patients", title: "Patient Management", description: "Efficient patient record management", image: "/images/screenshots/patients-management.png" },
+  { id: "crown-billing", title: "Billing & Invoicing", description: "Professional billing with installment tracking", image: "/images/screenshots/billing-invoicing.png" },
+  { id: "labra-orders", title: "Labra Order Management", description: "Streamlined laboratory workflow", image: "/images/screenshots/labra-order-management.png" },
+  { id: "tajviz-prescription", title: "Tajviz Prescriptions", description: "Modern digital prescription system", image: "/images/screenshots/tajviz-prescription.png" },
 ]
 
 export function Screenshots() {
   const t = useTranslations("screenshots")
+  const locale = useLocale()
+  const isRtl = locale === "fa" || locale === "ps"
   const [current, setCurrent] = useState(0)
   const [direction, setDirection] = useState(0)
 
@@ -78,34 +80,24 @@ export function Screenshots() {
                     transition={{ duration: 0.35, ease: "easeInOut" }}
                     className="absolute inset-0 flex items-center justify-center p-8"
                   >
-                    {screenshot.image ? (
-                      <Image
-                        src={screenshot.image}
-                        alt={screenshot.title}
-                        fill
-                        className="object-contain"
-                        sizes="(max-width: 1024px) 100vw, 1024px"
-                        priority={current === 0}
-                      />
-                    ) : (
-                      <div className="text-center">
-                        <div className={`inline-flex items-center justify-center size-24 rounded-3xl bg-gradient-to-br ${screenshot.color} text-white mb-6 shadow-lg`}>
-                          <span className="text-4xl font-bold">{screenshot.label}</span>
-                        </div>
-                        <h3 className="text-2xl font-bold text-slate-900">{screenshot.title}</h3>
-                        <p className="text-slate-500 mt-2">{screenshot.description}</p>
-                      </div>
-                    )}
+                    <Image
+                      src={screenshot.image}
+                      alt={screenshot.title}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 1024px) 100vw, 1024px"
+                      priority={current === 0}
+                    />
                   </motion.div>
                 </AnimatePresence>
               </div>
             </div>
 
             <div className="flex justify-center gap-3 mt-8">
-              <Button variant="outline" size="sm" onClick={prev} icon={ChevronLeft}>
+              <Button variant="outline" size="sm" onClick={prev} icon={isRtl ? ChevronRight : ChevronLeft}>
                 {t("previous")}
               </Button>
-              <Button variant="outline" size="sm" onClick={next} icon={ChevronRight} iconPosition="right">
+              <Button variant="outline" size="sm" onClick={next} icon={isRtl ? ChevronLeft : ChevronRight} iconPosition="right">
                 {t("next")}
               </Button>
             </div>

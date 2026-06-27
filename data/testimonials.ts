@@ -3,11 +3,11 @@ import type { Testimonial } from "@/types"
 export const testimonials: Testimonial[] = [
   {
     id: "1",
-    name: "Dr. Ahmad Rahimi",
+    name: "Dr. Abdullah Ahmadi",
     role: "Dentist",
-    company: "Rahimi Dental Clinic, Kabul",
+    company: "Markazi Dental Clinic, Bamyan",
     content:
-      "Crown has completely transformed how we manage our clinic. Patient records, appointments, and billing are now effortless. Our team loves it.",
+      "کرون بهترین دیتابیس و کارآمد ترین دیتابیس است من استفاده میکنم ۱۰۰ فی‌صد رضایت دارم",
     avatar: "",
     rating: 5,
   },
@@ -23,21 +23,21 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "3",
-    name: "Dr. Zainab Karimi",
+    name: "Dr. Saifullah Qadim",
     role: "General Practitioner",
-    company: "Karimi Medical Center, Balkh",
+    company: "Hanzala Medical Center, Nimroz",
     content:
-      "Tajviz made our prescriptions clear and professional. Patients appreciate the legibility, and we save time with the medicine database.",
+      "تجویز سیستم بسیارخوب است ما استفاده میکنم درکلینیک حنظله درولایت نیمروز",
     avatar: "",
     rating: 5,
   },
   {
     id: "4",
-    name: "Dr. Farid Ahmad",
+    name: "Dr. Najeya Khaksar",
     role: "Clinic Owner",
-    company: "Ahmad Dental Clinic, Kandahar",
+    company: "Ladies & Children's Clinic, Takhar",
     content:
-      "The multi-unit support in Crown is outstanding. We manage three branches seamlessly. The financial reports give us complete visibility into our business.",
+      "من از این دیتابیس کرون در کلینیک خانم ها واطفال یکسال شده استفاده میکنم کارم را خیلی آسان ساخته راجستر مریضان حساب مالی مریضان.تجویز نسخه .همچنان حساب لابراتوار ها به صورت خیلی راحت ثبت و استفاده میشود.. متشکرم از شخص که زحمت کشیده و راحتی معاینه خانه مارا در نظر گرفته واین دیتابیس را ساخته است..",
     avatar: "",
     rating: 5,
   },
@@ -48,6 +48,16 @@ export const testimonials: Testimonial[] = [
     company: "Qadir Dental Lab, Nangarhar",
     content:
       "Labra helps us stay organized and meet deadlines. The production scheduling feature alone saved us countless hours. Highly recommended.",
+    avatar: "",
+    rating: 5,
+  },
+  {
+    id: "6",
+    name: "Dr. Aminullah Kochi",
+    role: "Dentist",
+    company: "Ayobi Dental Clinic, Kabul",
+    content:
+      "We are really proud to use Crown It is easy and good designed we are using crown since 8 month its really good for us",
     avatar: "",
     rating: 5,
   },

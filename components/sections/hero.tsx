@@ -1,14 +1,35 @@
 "use client"
 
+import { useState, useEffect, useCallback } from "react"
 import { useTranslations } from "next-intl"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
+import Image from "next/image"
 import { ArrowRight, Play } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { AnimatedBackground } from "@/components/sections/animated-background"
-import { COMPANY } from "@/constants"
+
+const slides = [
+  { src: "/images/screenshots/crown-dashboard.png", alt: "Crown Dashboard" },
+  { src: "/images/screenshots/patients-management.png", alt: "Patient Management" },
+  { src: "/images/screenshots/billing-invoicing.png", alt: "Billing & Invoicing" },
+  { src: "/images/screenshots/labra-order-management.png", alt: "Labra Order Management" },
+  { src: "/images/screenshots/tajviz-prescription.png", alt: "Tajviz Prescription" },
+]
 
 export function Hero() {
   const t = useTranslations("hero")
+  const [current, setCurrent] = useState(0)
+  const [paused, setPaused] = useState(false)
+
+  const next = useCallback(() => {
+    setCurrent((prev) => (prev + 1) % slides.length)
+  }, [])
+
+  useEffect(() => {
+    if (paused) return
+    const timer = setInterval(next, 4000)
+    return () => clearInterval(timer)
+  }, [paused, next])
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-b from-blue-50/50 via-white to-white">
@@ -65,23 +86,43 @@ export function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative hidden lg:block"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
           >
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-blue-400/10 rounded-3xl blur-3xl" />
               <div className="relative bg-white/60 backdrop-blur-sm rounded-3xl border border-slate-200/60 shadow-2xl p-4">
-                <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-blue-50 via-white to-blue-50/50 border border-slate-100 flex items-center justify-center overflow-hidden">
-                  <div className="text-center p-8">
-                    <div className="inline-flex items-center justify-center size-20 rounded-2xl bg-blue-600 text-white mb-6">
-                      <span className="text-3xl font-bold">E</span>
-                    </div>
-                    <h3 className="text-2xl font-bold text-slate-900">{COMPANY.name}</h3>
-                    <p className="text-slate-500 mt-2">Software that powers healthcare</p>
-                    <div className="mt-6 flex justify-center gap-3">
-                      <div className="size-3 rounded-full bg-blue-600 animate-pulse" />
-                      <div className="size-3 rounded-full bg-emerald-500" />
-                      <div className="size-3 rounded-full bg-violet-500" />
-                    </div>
-                  </div>
+                <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-blue-50 via-white to-blue-50/50 border border-slate-100 relative overflow-hidden">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={current}
+                      initial={{ opacity: 0, scale: 1.1 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.5, ease: "easeInOut" }}
+                      className="absolute inset-0"
+                    >
+                      <Image
+                        src={slides[current].src}
+                        alt={slides[current].alt}
+                        fill
+                        className="object-contain p-2"
+                        sizes="(max-width: 1024px) 50vw, 600px"
+                      />
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+                <div className="flex justify-center gap-2 mt-4">
+                  {slides.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrent(i)}
+                      className={`size-2 rounded-full transition-all duration-300 ${
+                        i === current ? "bg-blue-600 w-5" : "bg-slate-300 hover:bg-slate-400"
+                      }`}
+                      aria-label={`Go to slide ${i + 1}`}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
