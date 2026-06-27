@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# عمران سافت (Emransoft) — Corporate Website
 
-## Getting Started
+A production-ready, fully internationalized corporate website for **Emransoft**, a dental clinic management software company based in Afghanistan. Built with Next.js 16, next-intl v4, and a real geographic SVG map of Afghanistan.
 
-First, run the development server:
+## 🌐 Live Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+[emransoft.com](https://emransoft.com) <!-- update when deployed -->
+
+## ✨ Features
+
+- **🌍 Trilingual i18n** — Dari (default, Afghan dialect), English, and Pashto via next-intl v4
+- **🔁 RTL / LTR** — Automatic direction switching; Dari & Pashto render right-to-left, English left-to-right
+- **🗺️ Interactive Afghanistan Map** — Real USGS-derived SVG map with 328 province/district boundaries, animated markers, connection lines, and hover tooltips
+- **📱 Fully Responsive** — Mobile-first design with a functional hamburger drawer menu
+- **⚡ Static Generation** — 24 SSG pages (8 routes × 3 locales) for fast loading and excellent Lighthouse scores
+- **🎨 Modern UI** — Tailwind CSS v4, Framer Motion animations, Lucide icons
+- **♿ Accessible** — ARIA labels, keyboard navigation, semantic HTML
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| **Next.js 16** (App Router) | React framework with Turbopack |
+| **next-intl v4** | Internationalization, routing, message loading |
+| **TypeScript** | Strict type safety |
+| **Tailwind CSS v4** | Utility-first styling |
+| **Framer Motion** | Page & component animations |
+| **next/image** | Optimized image delivery |
+| **SVG** | USGS-derived Afghanistan district map (public domain) |
+
+## 📁 Project Structure
+
+```
+├── app/[locale]/         # Route segments (home, about, contact, products, …)
+├── components/
+│   ├── layout/           # Header, Footer, LanguageSwitcher, LocaleProvider
+│   ├── map/              # ProvinceMarker, ConnectionLine, Tooltip
+│   ├── sections/         # Hero, Features, Statistics, Screenshots, …
+│   └── ui/               # Button, Card, Badge, Section wrappers
+├── data/                 # Static data (provinces, products, features, …)
+├── i18n/                 # Routing, navigation, request config
+├── messages/             # Translation JSON files (fa, en, ps)
+├── public/
+│   ├── images/           # Logos, screenshots
+│   └── maps/             # Afghanistan district SVG (1.76 MB)
+└── proxy.ts              # next-intl middleware (Next.js 16 convention)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev        # development server on http://localhost:3000
+npm run build      # production build (24 static pages)
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📦 Deployment
 
-## Learn More
+Deploy on **Vercel** with zero configuration:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm i -g vercel
+vercel
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Set the **Root Directory** to `./` and the framework to **Next.js**. All 24 routes will be statically generated.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🗣️ Internationalization
 
-## Deploy on Vercel
+- Default locale: **Dari (fa)** — URLs omit `/fa` prefix (`localePrefix: "as-needed"`)
+- English (`en`) and Pashto (`ps`) use locale prefixes: `/en/about`, `/ps/products`
+- Afghan Dari vocabulary used throughout (ولایت, معاینه خانه, سافتویر, مریض, داکتر, تیلیفون)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📄 License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+All rights reserved. © 2026 Emransoft.
