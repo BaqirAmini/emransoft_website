@@ -1,0 +1,173 @@
+{
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "about": "About",
+    "testimonials": "Testimonials",
+    "contact": "Contact",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "badge": "Trusted by 100+ customers across 10+ provinces",
+    "title": "Professional Software Solutions for Afghanistan",
+    "subtitle": "Building reliable software that empowers healthcare centers and businesses across Afghanistan.",
+    "exploreProducts": "Explore Products",
+    "contactUs": "Contact Us"
+  },
+  "statistics": {
+    "provinces": "10+ Provinces",
+    "customers": "100+ Happy Customers",
+    "products": "3 Professional Products",
+    "growth": "Growing Every Year"
+  },
+  "products": {
+    "title": "Our Products",
+    "subtitle": "Professional software solutions designed for healthcare and business management in Afghanistan.",
+    "learnMore": "Learn More about {name}",
+    "features": "Key Features"
+  },
+  "productCrown": {
+    "tagline": "Dental Clinic Management System",
+    "slogan": "Crown — Your Friend and Partner.",
+    "description": "A comprehensive dental practice management solution designed to streamline every aspect of your clinic. From patient records to financial reports, Crown handles it all with elegance and precision."
+  },
+  "productLabra": {
+    "tagline": "Dental Laboratory Management System",
+    "slogan": "Labra — Precision in Every Case.",
+    "description": "Empower your dental laboratory with seamless order management, production tracking, and client communication. Labra brings efficiency and organization to every workflow."
+  },
+  "productTajviz": {
+    "tagline": "Computerized Prescription System",
+    "slogan": "Tajviz — Clear Prescriptions, Better Care.",
+    "description": "Replace handwritten prescriptions with a modern, legible, and professional digital prescription system. Tajviz improves accuracy and enhances the patient experience."
+  },
+  "map": {
+    "title": "Coverage Across Afghanistan",
+    "subtitle": "Our software is trusted by healthcare professionals in 10+ provinces, with rapid expansion underway.",
+    "activeProvinces": "Active provinces",
+    "growingCoverage": "Growing coverage",
+    "provincesCount": "10+ Provinces",
+    "crownActive": "Crown Active",
+    "hubProvince": "Headquarters",
+    "since": "Since",
+    "provincesLabel": "Provinces",
+    "legendActive": "Active Province",
+    "legendHub": "Headquarters",
+    "legendConnection": "Connection",
+    "provinceNames": {
+      "kabul": "Kabul",
+      "herat": "Herat",
+      "balkh": "Balkh",
+      "kandahar": "Kandahar",
+      "nangarhar": "Nangarhar",
+      "kunduz": "Kunduz",
+      "takhar": "Takhar",
+      "logar": "Logar",
+      "ghazni": "Ghazni",
+      "daikundi": "Daikundi"
+    }
+  },
+  "features": {
+    "title": "Why Choose Emransoft",
+    "subtitle": "We build software that works reliably in Afghanistan's unique environment."
+  },
+  "screenshots": {
+    "title": "See It in Action",
+    "subtitle": "A glimpse into our professional software interfaces.",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "testimonials": {
+    "title": "Trusted by Professionals",
+    "subtitle": "Hear from the healthcare professionals who use our software every day."
+  },
+  "cta": {
+    "title": "Ready to Transform Your Practice?",
+    "subtitle": "Join 100+ healthcare professionals across Afghanistan who trust Emransoft. Get started today.",
+    "getStarted": "Get Started",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram"
+  },
+  "footer": {
+    "description": "Building reliable software that empowers healthcare centers and businesses across Afghanistan.",
+    "navigation": "Navigation",
+    "products": "Products",
+    "contact": "Contact",
+    "social": "Social",
+    "copyright": "© {year} Emransoft. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Have a question or want to learn more about our products? We'd love to hear from you.",
+    "office": "Office",
+    "sendMessage": "Send Us a Message",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "your@email.com",
+    "subject": "Subject",
+    "subjectPlaceholder": "How can we help?",
+    "message": "Message",
+    "messagePlaceholder": "Tell us more about your needs...",
+    "send": "Send Message"
+  },
+  "about": {
+    "title": "About Emransoft",
+    "subtitle": "We are a team of passionate software engineers dedicated to transforming healthcare and business operations across Afghanistan through modern, reliable technology.",
+    "mission": {
+      "title": "Our Mission",
+      "desc": "Build reliable, beautiful, and professional software solutions that help healthcare centers and businesses across Afghanistan become more productive."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "desc": "To become Afghanistan's most trusted software company, empowering every healthcare provider and business with modern technology."
+    },
+    "values": {
+      "title": "Our Values",
+      "desc": "Reliability, integrity, innovation, and customer success are at the core of everything we build. We put our customers first."
+    },
+    "storyTitle": "Our Story",
+    "story": "Emransoft was founded with a simple mission: bring professional, reliable software to Afghan healthcare providers. We saw that clinics and dental practices in Afghanistan were using outdated methods or generic software that didn't meet their needs. So we built solutions designed specifically for the Afghan market — offline capable, easy to use, and built with modern technology. Today, we serve over 100 customers across 10+ provinces, and we are growing every year."
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "subtitle": "Sorry, we couldn't find the page you're looking for. It might have been moved or doesn't exist.",
+    "backHome": "Back to Home"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: June 2025",
+    "intro": "Emransoft (\"we\", \"our\", \"us\") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our software products.",
+    "section1Title": "1. Information We Collect",
+    "section1Desc": "We collect information that you voluntarily provide to us when you fill out a contact form, register for our software, or communicate with us. This may include your name, email address, phone number, and organization details.",
+    "section2Title": "2. How We Use Your Information",
+    "section2Desc": "We use the information we collect to provide, maintain, and improve our software services, to communicate with you about your account, and to send you technical updates and support information.",
+    "section3Title": "3. Data Security",
+    "section3Desc": "We implement appropriate technical and organizational security measures to protect your personal information. However, no electronic transmission or storage method is 100% secure.",
+    "section4Title": "4. Contact Us",
+    "section4Desc": "If you have questions about this Privacy Policy, please contact us at {email}."
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: June 2025",
+    "section1Title": "1. Acceptance of Terms",
+    "section1Desc": "By accessing or using Emransoft software and website, you agree to be bound by these Terms of Service. If you do not agree, please do not use our services.",
+    "section2Title": "2. License",
+    "section2Desc": "We grant you a limited, non-exclusive, non-transferable license to use our software products subject to payment of applicable fees and compliance with these terms.",
+    "section3Title": "3. User Obligations",
+    "section3Desc": "You agree to use our software in compliance with all applicable laws and regulations. You shall not attempt to reverse engineer, modify, or distribute our software without explicit written permission.",
+    "section4Title": "4. Intellectual Property",
+    "section4Desc": "All intellectual property rights in our software, website, and branding remain the property of Emransoft. These terms do not grant you any ownership rights.",
+    "section5Title": "5. Limitation of Liability",
+    "section5Desc": "Emransoft shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of our software.",
+    "section6Title": "6. Contact",
+    "section6Desc": "For questions about these terms, contact us at {email}."
+  },
+  "language": {
+    "fa": "دری",
+    "en": "English",
+    "ps": "پښتو"
+  }
+}
