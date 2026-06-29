@@ -81,6 +81,15 @@
     "title": "Trusted by Professionals",
     "subtitle": "Hear from the healthcare professionals who use our software every day."
   },
+  "websites": {
+    "title": "We Build Custom Websites & Databases Too",
+    "subtitle": "Beyond our own products, we design and develop custom websites and database systems for businesses and clinics. Here's a sample project — and we can build one for you.",
+    "visitSite": "Visit Site",
+    "ctaTitle": "Want a Custom Website or Database?",
+    "ctaSubtitle": "Tell us about your project and we'll build a solution tailored to your needs — from professional websites to complete database management systems.",
+    "ctaContact": "Contact Us",
+    "ctaWhatsapp": "WhatsApp Us"
+  },
   "cta": {
     "title": "Ready to Transform Your Practice?",
     "subtitle": "Join 100+ healthcare professionals across Afghanistan who trust Emransoft. Get started today.",

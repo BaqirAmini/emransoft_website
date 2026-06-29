@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useTranslations } from "next-intl"
 import { motion } from "framer-motion"
 import { ArrowRight, MessageCircle, Send } from "lucide-react"
@@ -31,9 +32,13 @@ export function CTA() {
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <Button size="lg" icon={ArrowRight} className="bg-white text-blue-700 hover:bg-blue-50 shadow-lg" href="/contact">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-medium rounded-xl bg-white text-blue-700 hover:bg-blue-50 shadow-lg transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
+            >
               {t("getStarted")}
-            </Button>
+              <ArrowRight className="size-4" />
+            </Link>
             <Button size="lg" variant="outline" icon={MessageCircle} iconPosition="left" className="border-white/30 text-white hover:bg-white/10" href={SOCIAL.whatsapp}>
               {t("whatsapp")}
             </Button>

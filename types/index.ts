@@ -40,3 +40,12 @@ export interface NavLink {
   href: string
   children?: { label: string; href: string }[]
 }
+
+export interface ClientWebsite {
+  id: string
+  name: string
+  description: string
+  url: string
+  preview?: string
+  tags: string[]
+}

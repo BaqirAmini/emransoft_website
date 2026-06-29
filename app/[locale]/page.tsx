@@ -6,6 +6,7 @@ import { AfghanistanMap } from "@/components/sections/afghanistan-map"
 import { Features } from "@/components/sections/features"
 import { Screenshots } from "@/components/sections/screenshots"
 import { Testimonials } from "@/components/sections/testimonials"
+import { Websites } from "@/components/sections/websites"
 import { CTA } from "@/components/sections/cta"
 
 type Props = {
@@ -25,6 +26,7 @@ export default async function HomePage({ params }: Props) {
       <Features />
       <Screenshots />
       <Testimonials />
+      <Websites />
       <CTA />
     </>
   )

@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl"
 import Image from "next/image"
 import { Mail, MapPin, Phone } from "lucide-react"
+import { SocialIcon } from "@/components/ui/social-icon"
 import { Link } from "@/i18n/navigation"
 import { COMPANY, SOCIAL, NAV_LINKS } from "@/constants"
 import { products } from "@/data/products"
@@ -91,10 +92,30 @@ export function Footer() {
           <div>
             <h3 className="text-sm font-semibold text-white mb-4">{t("social")}</h3>
             <ul className="space-y-3">
-              <li><a href={SOCIAL.whatsapp} target="_blank" rel="noopener noreferrer" className="text-sm text-slate-400 hover:text-white transition-colors">WhatsApp</a></li>
-              <li><a href={SOCIAL.telegram} target="_blank" rel="noopener noreferrer" className="text-sm text-slate-400 hover:text-white transition-colors">Telegram</a></li>
-              <li><a href={SOCIAL.youtube} target="_blank" rel="noopener noreferrer" className="text-sm text-slate-400 hover:text-white transition-colors">YouTube</a></li>
-              <li><a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" className="text-sm text-slate-400 hover:text-white transition-colors">Facebook</a></li>
+              <li>
+                <a href={SOCIAL.whatsapp} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors">
+                  <SocialIcon name="whatsapp" className="size-4 shrink-0" />
+                  WhatsApp
+                </a>
+              </li>
+              <li>
+                <a href={SOCIAL.telegram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors">
+                  <SocialIcon name="telegram" className="size-4 shrink-0" />
+                  Telegram
+                </a>
+              </li>
+              <li>
+                <a href={SOCIAL.youtube} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors">
+                  <SocialIcon name="youtube" className="size-4 shrink-0" />
+                  YouTube
+                </a>
+              </li>
+              <li>
+                <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors">
+                  <SocialIcon name="facebook" className="size-4 shrink-0" />
+                  Facebook
+                </a>
+              </li>
             </ul>
           </div>
         </div>
