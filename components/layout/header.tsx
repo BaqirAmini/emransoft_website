@@ -67,7 +67,6 @@ export function Header() {
         </nav>
 
         <div className="hidden md:flex items-center gap-2">
-          <LanguageSwitcher />
           <Button variant="ghost" size="sm" href="/contact">
             {t("contact")}
           </Button>
@@ -76,11 +75,11 @@ export function Header() {
           </Button>
         </div>
 
-        <div className="md:hidden flex items-center gap-2">
+        <div className="flex items-center gap-2">
           <LanguageSwitcher />
           <button
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className="p-2 text-slate-600 hover:text-slate-900"
+            className="md:hidden p-2 text-slate-600 hover:text-slate-900"
             aria-label="Toggle menu"
           >
             {isMobileOpen ? <X className="size-6" /> : <Menu className="size-6" />}
