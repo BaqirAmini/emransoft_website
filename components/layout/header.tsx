@@ -54,7 +54,7 @@ export function Header() {
           />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-8">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}
@@ -66,7 +66,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden lg:flex items-center gap-2">
           <Button variant="ghost" size="sm" href="/contact">
             {t("contact")}
           </Button>
@@ -79,7 +79,7 @@ export function Header() {
           <LanguageSwitcher />
           <button
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className="md:hidden p-2 text-slate-600 hover:text-slate-900"
+            className="lg:hidden p-2 text-slate-600 hover:text-slate-900"
             aria-label="Toggle menu"
           >
             {isMobileOpen ? <X className="size-6" /> : <Menu className="size-6" />}
@@ -89,7 +89,7 @@ export function Header() {
 
       <div
         className={cn(
-          "md:hidden overflow-hidden transition-all duration-300 bg-white border-b border-slate-100",
+          "lg:hidden overflow-hidden transition-all duration-300 bg-white border-b border-slate-100",
           isMobileOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         )}
       >
