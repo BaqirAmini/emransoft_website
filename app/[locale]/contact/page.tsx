@@ -1,18 +1,27 @@
 "use client"
 
 import { useTranslations } from "next-intl"
-import { Mail, MessageCircle, Send, Video, Globe, MapPin } from "lucide-react"
+import { Mail, MapPin } from "lucide-react"
 import { Section } from "@/components/ui/section"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { SocialIcon } from "@/components/ui/social-icon"
 import { COMPANY, SOCIAL } from "@/constants"
 import type { LucideIcon } from "lucide-react"
 
-const contactMethods: { icon: LucideIcon; labelKey: string; value: string; href: string; color: string }[] = [
-  { icon: MessageCircle, labelKey: "WhatsApp", value: "+93 792 195 121", href: SOCIAL.whatsapp, color: "bg-emerald-50 text-emerald-600" },
-  { icon: Send, labelKey: "Telegram", value: "@emransoft", href: SOCIAL.telegram, color: "bg-sky-50 text-sky-600" },
-  { icon: Video, labelKey: "YouTube", value: "@emransoft4you", href: SOCIAL.youtube, color: "bg-red-50 text-red-600" },
-  { icon: Globe, labelKey: "Facebook", value: "@emransoft4you", href: SOCIAL.facebook, color: "bg-blue-50 text-blue-600" },
+type ContactMethod = {
+  icon: LucideIcon | "whatsapp" | "telegram" | "youtube" | "facebook"
+  labelKey: string
+  value: string
+  href: string
+  color: string
+}
+
+const contactMethods: ContactMethod[] = [
+  { icon: "whatsapp", labelKey: "WhatsApp", value: "+93 792 195 121", href: SOCIAL.whatsapp, color: "bg-emerald-50 text-emerald-600" },
+  { icon: "telegram", labelKey: "Telegram", value: "@emransoft", href: SOCIAL.telegram, color: "bg-sky-50 text-sky-600" },
+  { icon: "youtube", labelKey: "YouTube", value: "@emransoft4you", href: SOCIAL.youtube, color: "bg-red-50 text-red-600" },
+  { icon: "facebook", labelKey: "Facebook", value: "@emransoft4you", href: SOCIAL.facebook, color: "bg-blue-50 text-blue-600" },
   { icon: Mail, labelKey: "Email", value: COMPANY.email, href: SOCIAL.email, color: "bg-blue-50 text-blue-600" },
 ]
 
@@ -34,16 +43,16 @@ export default function ContactPage() {
         <div>
           <div className="grid gap-4">
             {contactMethods.map((method) => {
-              const IconComponent = method.icon
+              const isBrand = typeof method.icon === "string"
               return (
                 <a key={method.labelKey} href={method.href} target="_blank" rel="noopener noreferrer">
                   <Card className="flex items-center gap-4 hover:border-blue-200">
                     <div className={`flex size-12 shrink-0 items-center justify-center rounded-xl ${method.color}`}>
-                      <IconComponent className="size-6" />
+                      {isBrand ? <SocialIcon name={method.icon} className="size-6" /> : <method.icon className="size-6" />}
                     </div>
                     <div className="flex-1">
                       <p className="text-sm font-medium text-slate-500">{method.labelKey}</p>
-                      <p className="text-base font-semibold text-slate-900">{method.value}</p>
+                      <p className="text-base font-semibold text-slate-900" dir="ltr">{method.value}</p>
                     </div>
                   </Card>
                 </a>
@@ -57,7 +66,7 @@ export default function ContactPage() {
               <div>
                 <p className="text-sm font-medium text-slate-500">{t("office")}</p>
                 <p className="text-base font-semibold text-slate-900">{COMPANY.address}</p>
-                <p className="text-sm text-slate-500 mt-1">{COMPANY.phone}</p>
+                <p className="text-sm text-slate-500 mt-1" dir="ltr">{COMPANY.phone}</p>
               </div>
             </div>
           </Card>

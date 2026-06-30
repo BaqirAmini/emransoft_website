@@ -83,7 +83,7 @@ export function Footer() {
                   className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors"
                 >
                   <Phone className="size-4 shrink-0" />
-                  {COMPANY.phone}
+                  <span dir="ltr">{COMPANY.phone}</span>
                 </a>
               </li>
             </ul>
