@@ -67,10 +67,10 @@ export function ProductCard({ product, index }: ProductCardProps) {
             {productsT("features")}
           </h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-            {product.features.map((feature) => (
+            {product.features.map((feature, i) => (
               <div key={feature} className="flex items-center gap-2 text-sm text-slate-600">
                 <Check className="size-4 shrink-0" style={{ color: product.color }} />
-                <span>{feature}</span>
+                <span>{t(`features.${i}`)}</span>
               </div>
             ))}
           </div>

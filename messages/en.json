@@ -30,17 +30,55 @@
   "productCrown": {
     "tagline": "Dental Clinic Management System",
     "slogan": "Crown — Your Friend and Partner.",
-    "description": "A comprehensive dental practice management solution designed to streamline every aspect of your clinic. From patient records to financial reports, Crown handles it all with elegance and precision."
+    "description": "A comprehensive dental practice management solution designed to streamline every aspect of your clinic. From patient records to financial reports, Crown handles it all with elegance and precision.",
+    "features": {
+      "0": "Patient Management",
+      "1": "Medical Records",
+      "2": "Appointment Scheduling",
+      "3": "Computerized Prescriptions",
+      "4": "Billing & Invoicing",
+      "5": "Installments & Outstanding Balances",
+      "6": "Doctors & Staff Management",
+      "7": "Multi Unit Support",
+      "8": "Laboratory Accounting",
+      "9": "Income & Expense Management",
+      "10": "Financial Reports",
+      "11": "Backup & Restore"
+    }
   },
   "productLabra": {
     "tagline": "Dental Laboratory Management System",
     "slogan": "Labra — Precision in Every Case.",
-    "description": "Empower your dental laboratory with seamless order management, production tracking, and client communication. Labra brings efficiency and organization to every workflow."
+    "description": "Empower your dental laboratory with seamless order management, production tracking, and client communication. Labra brings efficiency and organization to every workflow.",
+    "features": {
+      "0": "Order Management",
+      "1": "Case Tracking",
+      "2": "Client Management",
+      "3": "Material Inventory",
+      "4": "Delivery Management",
+      "5": "Invoice Generation",
+      "6": "Quality Control",
+      "7": "Production Scheduling",
+      "8": "Multi Technician Support",
+      "9": "Financial Reports"
+    }
   },
   "productTajviz": {
     "tagline": "Computerized Prescription System",
     "slogan": "Tajviz — Clear Prescriptions, Better Care.",
-    "description": "Replace handwritten prescriptions with a modern, legible, and professional digital prescription system. Tajviz improves accuracy and enhances the patient experience."
+    "description": "Replace handwritten prescriptions with a modern, legible, and professional digital prescription system. Tajviz improves accuracy and enhances the patient experience.",
+    "features": {
+      "0": "Digital Prescriptions",
+      "1": "Patient History",
+      "2": "Medicine Database",
+      "3": "Dosage Calculator",
+      "4": "Print & Digital Sharing",
+      "5": "Prescription Templates",
+      "6": "Doctor Signature",
+      "7": "Prescription Archive",
+      "8": "Multi Language Support",
+      "9": "Offline Mode"
+    }
   },
   "map": {
     "title": "Coverage Across Afghanistan",
