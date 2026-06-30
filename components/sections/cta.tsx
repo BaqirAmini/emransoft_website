@@ -3,8 +3,9 @@
 import Link from "next/link"
 import { useTranslations } from "next-intl"
 import { motion } from "framer-motion"
-import { ArrowRight, MessageCircle, Send } from "lucide-react"
+import { ArrowRight, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { SocialIcon } from "@/components/ui/social-icon"
 import { SOCIAL } from "@/constants"
 
 export function CTA() {
@@ -39,7 +40,8 @@ export function CTA() {
               {t("getStarted")}
               <ArrowRight className="size-4" />
             </Link>
-            <Button size="lg" variant="outline" icon={MessageCircle} iconPosition="left" className="border-white/30 text-white hover:bg-white/10" href={SOCIAL.whatsapp}>
+            <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10" href={SOCIAL.whatsapp}>
+              <SocialIcon name="whatsapp" className="size-4" />
               {t("whatsapp")}
             </Button>
             <Button size="lg" variant="outline" icon={Send} iconPosition="left" className="border-white/30 text-white hover:bg-white/10" href={SOCIAL.telegram}>
