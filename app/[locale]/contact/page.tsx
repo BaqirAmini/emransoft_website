@@ -2,15 +2,16 @@
 
 import { useTranslations } from "next-intl"
 import { Mail, MapPin } from "lucide-react"
+import type { ReactNode } from "react"
 import { Section } from "@/components/ui/section"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { SocialIcon } from "@/components/ui/social-icon"
+import type { SocialIconName } from "@/components/ui/social-icon"
 import { COMPANY, SOCIAL } from "@/constants"
-import type { LucideIcon } from "lucide-react"
 
 type ContactMethod = {
-  icon: LucideIcon | "whatsapp" | "telegram" | "youtube" | "facebook"
+  icon: SocialIconName | "mail"
   labelKey: string
   value: string
   href: string
@@ -22,7 +23,7 @@ const contactMethods: ContactMethod[] = [
   { icon: "telegram", labelKey: "Telegram", value: "@emransoft", href: SOCIAL.telegram, color: "bg-sky-50 text-sky-600" },
   { icon: "youtube", labelKey: "YouTube", value: "@emransoft4you", href: SOCIAL.youtube, color: "bg-red-50 text-red-600" },
   { icon: "facebook", labelKey: "Facebook", value: "@emransoft4you", href: SOCIAL.facebook, color: "bg-blue-50 text-blue-600" },
-  { icon: Mail, labelKey: "Email", value: COMPANY.email, href: SOCIAL.email, color: "bg-blue-50 text-blue-600" },
+  { icon: "mail", labelKey: "Email", value: COMPANY.email, href: SOCIAL.email, color: "bg-blue-50 text-blue-600" },
 ]
 
 export default function ContactPage() {
@@ -43,12 +44,11 @@ export default function ContactPage() {
         <div>
           <div className="grid gap-4">
             {contactMethods.map((method) => {
-              const isBrand = typeof method.icon === "string"
               return (
                 <a key={method.labelKey} href={method.href} target="_blank" rel="noopener noreferrer">
                   <Card className="flex items-center gap-4 hover:border-blue-200">
                     <div className={`flex size-12 shrink-0 items-center justify-center rounded-xl ${method.color}`}>
-                      {isBrand ? <SocialIcon name={method.icon} className="size-6" /> : <method.icon className="size-6" />}
+                      {method.icon === "mail" ? <Mail className="size-6" /> : <SocialIcon name={method.icon} className="size-6" />}
                     </div>
                     <div className="flex-1">
                       <p className="text-sm font-medium text-slate-500">{method.labelKey}</p>

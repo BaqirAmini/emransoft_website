@@ -12,6 +12,7 @@ import { LanguageSwitcher } from "@/components/layout/language-switcher"
 const NAV_ITEMS = [
   { key: "home", href: "/" },
   { key: "products", href: "/products" },
+  { key: "news", href: "/news" },
   { key: "about", href: "/about" },
   { key: "testimonials", href: "/testimonials" },
   { key: "contact", href: "/contact" },

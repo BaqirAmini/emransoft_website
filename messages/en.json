@@ -5,6 +5,7 @@
     "about": "About",
     "testimonials": "Testimonials",
     "contact": "Contact",
+    "news": "News",
     "getStarted": "Get Started"
   },
   "hero": {
@@ -96,6 +97,24 @@
     "getStarted": "Get Started",
     "whatsapp": "WhatsApp",
     "telegram": "Telegram"
+  },
+  "news": {
+    "title": "Latest News",
+    "subtitle": "Stay updated with the latest news and announcements from Emransoft.",
+    "readMore": "Read More",
+    "backToNews": "Back to News",
+    "viewAll": "View All News",
+    "search": "Search articles...",
+    "filter": "Filter by tags",
+    "noResults": "No articles found matching your search.",
+    "previousArticle": "Previous Article",
+    "nextArticle": "Next Article",
+    "notAvailable": "This article is not available in this language yet.",
+    "relatedArticles": "Related Articles",
+    "by": "By",
+    "publishedOn": "Published on",
+    "homepageTitle": "Latest News",
+    "homepageSubtitle": "Stay updated with the latest news and announcements from Emransoft."
   },
   "footer": {
     "description": "Building reliable software that empowers healthcare centers and businesses across Afghanistan.",

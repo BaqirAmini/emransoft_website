@@ -1,4 +1,4 @@
-type SocialIconName = "whatsapp" | "telegram" | "youtube" | "facebook"
+export type SocialIconName = "whatsapp" | "telegram" | "youtube" | "facebook"
 
 export function SocialIcon({ name, className = "size-4" }: { name: SocialIconName; className?: string }) {
   switch (name) {
