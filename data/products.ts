@@ -7,7 +7,7 @@ export const products: Product[] = [
     tagline: "Dental Clinic Management System",
     description:
       "A comprehensive dental practice management solution designed to streamline every aspect of your clinic. From patient records to financial reports, Crown handles it all with elegance and precision.",
-    slogan: "Crown — Your Friend and Partner.",
+    slogan: "Crown; Your Friend and Partner!",
     features: [
       "Patient Management",
       "Medical Records",
@@ -32,7 +32,7 @@ export const products: Product[] = [
     tagline: "Dental Laboratory Management System",
     description:
       "Empower your dental laboratory with seamless order management, production tracking, and client communication. Labra brings efficiency and organization to every workflow.",
-    slogan: "Labra — Precision in Every Case.",
+    slogan: "Labra; Easy, Fast and Accurate Management!",
     features: [
       "Order Management",
       "Case Tracking",
@@ -55,7 +55,7 @@ export const products: Product[] = [
     tagline: "Computerized Prescription System",
     description:
       "Replace handwritten prescriptions with a modern, legible, and professional digital prescription system. Tajviz improves accuracy and enhances the patient experience.",
-    slogan: "Tajviz — Clear Prescriptions, Better Care.",
+    slogan: "Tajviz; Accuracy Today, Health Tomorrow!",
     features: [
       "Digital Prescriptions",
       "Patient History",
