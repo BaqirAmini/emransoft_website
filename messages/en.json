@@ -14,7 +14,14 @@
     "title": "Professional Software Solutions for Afghanistan",
     "subtitle": "Building reliable software that empowers healthcare centers and businesses across Afghanistan.",
     "exploreProducts": "Explore Products",
-    "contactUs": "Contact Us"
+    "contactUs": "Contact Us",
+    "scenes": {
+      "code": "Crafted with Precision",
+      "dashboard": "Insights that Drive Growth",
+      "network": "Seamlessly Connected",
+      "devices": "Built for Every Device",
+      "cloud": "Secure & Cloud-Ready"
+    }
   },
   "statistics": {
     "provinces": "10+ Provinces",
@@ -30,7 +37,7 @@
   },
   "productCrown": {
     "tagline": "Dental Clinic Management System",
-    "slogan": "Crown — Your Friend and Partner.",
+    "slogan": "Crown; Your Friend and Partner!",
     "description": "A comprehensive dental practice management solution designed to streamline every aspect of your clinic. From patient records to financial reports, Crown handles it all with elegance and precision.",
     "features": {
       "0": "Patient Management",
@@ -49,7 +56,7 @@
   },
   "productLabra": {
     "tagline": "Dental Laboratory Management System",
-    "slogan": "Labra — Precision in Every Case.",
+    "slogan": "Labra; Easy, Fast and Accurate Management!",
     "description": "Empower your dental laboratory with seamless order management, production tracking, and client communication. Labra brings efficiency and organization to every workflow.",
     "features": {
       "0": "Order Management",
@@ -66,7 +73,7 @@
   },
   "productTajviz": {
     "tagline": "Computerized Prescription System",
-    "slogan": "Tajviz — Clear Prescriptions, Better Care.",
+    "slogan": "Tajviz; Accuracy Today, Health Tomorrow!",
     "description": "Replace handwritten prescriptions with a modern, legible, and professional digital prescription system. Tajviz improves accuracy and enhances the patient experience.",
     "features": {
       "0": "Digital Prescriptions",

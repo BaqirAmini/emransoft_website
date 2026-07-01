@@ -2,19 +2,11 @@
 
 import { useState, useEffect, useCallback } from "react"
 import { useTranslations } from "next-intl"
-import { motion, AnimatePresence } from "framer-motion"
-import Image from "next/image"
+import { motion } from "framer-motion"
 import { ArrowRight, Play } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { AnimatedBackground } from "@/components/sections/animated-background"
-
-const slides = [
-  { src: "/images/screenshots/crown-dashboard.png", alt: "Crown Dashboard" },
-  { src: "/images/screenshots/patients-management.png", alt: "Patient Management" },
-  { src: "/images/screenshots/billing-invoicing.png", alt: "Billing & Invoicing" },
-  { src: "/images/screenshots/labra-order-management.png", alt: "Labra Order Management" },
-  { src: "/images/screenshots/tajviz-prescription.png", alt: "Tajviz Prescription" },
-]
+import { heroScenes } from "@/components/sections/hero-visuals"
 
 export function Hero() {
   const t = useTranslations("hero")
@@ -22,7 +14,7 @@ export function Hero() {
   const [paused, setPaused] = useState(false)
 
   const next = useCallback(() => {
-    setCurrent((prev) => (prev + 1) % slides.length)
+    setCurrent((prev) => (prev + 1) % heroScenes.length)
   }, [])
 
   useEffect(() => {
@@ -85,47 +77,79 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative hidden lg:block"
+            className="relative block mt-4 sm:mt-8 lg:-mt-16 xl:-mt-24"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-blue-400/10 rounded-3xl blur-3xl" />
-              <div className="relative bg-white/60 backdrop-blur-sm rounded-3xl border border-slate-200/60 shadow-2xl p-4">
-                <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-blue-50 via-white to-blue-50/50 border border-slate-100 relative overflow-hidden">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={current}
-                      initial={{ opacity: 0, scale: 1.1 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{ duration: 0.5, ease: "easeInOut" }}
-                      className="absolute inset-0"
-                    >
-                      <Image
-                        src={slides[current].src}
-                        alt={slides[current].alt}
-                        fill
-                        className="object-contain p-2"
-                        sizes="(max-width: 1024px) 50vw, 600px"
-                      />
-                    </motion.div>
-                  </AnimatePresence>
+            <motion.div
+              animate={{ y: [0, -12, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              className="relative"
+            >
+              {/* Ambient glow */}
+              <div className="absolute -inset-6 bg-gradient-to-tr from-blue-600/20 via-sky-400/10 to-blue-400/20 rounded-[2rem] blur-3xl" />
+
+              {/* Browser-style window */}
+              <div className="relative rounded-2xl border border-slate-200/70 bg-white shadow-[0_30px_60px_-15px_rgba(15,23,42,0.35)] overflow-hidden ring-1 ring-white/50">
+                {/* Title bar */}
+                <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-100 bg-slate-50">
+                  <span className="size-3 rounded-full bg-red-400/80" />
+                  <span className="size-3 rounded-full bg-amber-400/80" />
+                  <span className="size-3 rounded-full bg-green-400/80" />
+                  <div className="ml-3 flex-1">
+                    <div className="mx-auto h-5 max-w-[60%] rounded-md bg-white border border-slate-200/80" />
+                  </div>
                 </div>
-                <div className="flex justify-center gap-2 mt-4">
-                  {slides.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setCurrent(i)}
-                      className={`size-2 rounded-full transition-all duration-300 ${
-                        i === current ? "bg-blue-600 w-5" : "bg-slate-300 hover:bg-slate-400"
+
+                {/* Slides — stacked crossfade (all mounted; opacity toggled) */}
+                <div className="aspect-[16/10] bg-gradient-to-br from-blue-50 via-white to-blue-50/50 relative overflow-hidden">
+                  {heroScenes.map(({ id, label, Scene }, i) => (
+                    <div
+                      key={id}
+                      className={`absolute inset-0 p-4 transition-opacity duration-700 ease-in-out ${
+                        i === current ? "opacity-100" : "opacity-0"
                       }`}
-                      aria-label={`Go to slide ${i + 1}`}
-                    />
+                      style={{ pointerEvents: i === current ? "auto" : "none" }}
+                      role="img"
+                      aria-label={label}
+                    >
+                      <Scene />
+                    </div>
                   ))}
                 </div>
               </div>
-            </div>
+
+              {/* Inspiring per-slide caption */}
+              <div className="relative mt-6 h-6">
+                {heroScenes.map(({ id }, i) => (
+                  <div
+                    key={id}
+                    className={`absolute inset-0 flex items-center justify-center gap-2 transition-opacity duration-500 ${
+                      i === current ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    <span className="size-1.5 rounded-full bg-blue-600" />
+                    <p className="text-base font-semibold tracking-tight text-slate-800">
+                      {t(`scenes.${id}`)}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Dots */}
+              <div className="flex justify-center gap-2 mt-4">
+                {heroScenes.map(({ id, label }, i) => (
+                  <button
+                    key={id}
+                    onClick={() => setCurrent(i)}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      i === current ? "bg-blue-600 w-6" : "w-2 bg-slate-300 hover:bg-slate-400"
+                    }`}
+                    aria-label={`Show ${label}`}
+                  />
+                ))}
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
