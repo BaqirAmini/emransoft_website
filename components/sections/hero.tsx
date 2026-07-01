@@ -1,20 +1,26 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
-import { useTranslations } from "next-intl"
+import { useTranslations, useLocale } from "next-intl"
 import { motion } from "framer-motion"
-import { ArrowRight, Play } from "lucide-react"
+import { ArrowRight, Play, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { AnimatedBackground } from "@/components/sections/animated-background"
 import { heroScenes } from "@/components/sections/hero-visuals"
 
 export function Hero() {
   const t = useTranslations("hero")
+  const locale = useLocale()
+  const isRtl = locale === "fa" || locale === "ps"
   const [current, setCurrent] = useState(0)
   const [paused, setPaused] = useState(false)
 
   const next = useCallback(() => {
     setCurrent((prev) => (prev + 1) % heroScenes.length)
+  }, [])
+
+  const prev = useCallback(() => {
+    setCurrent((p) => (p - 1 + heroScenes.length) % heroScenes.length)
   }, [])
 
   useEffect(() => {
@@ -116,6 +122,22 @@ export function Hero() {
                       <Scene />
                     </div>
                   ))}
+
+                  {/* Manual navigation arrows (RTL-aware: left arrow advances in RTL) */}
+                  <button
+                    onClick={isRtl ? next : prev}
+                    aria-label={isRtl ? "Next slide" : "Previous slide"}
+                    className="group absolute left-3 top-1/2 -translate-y-1/2 flex size-9 items-center justify-center rounded-full bg-white text-slate-600 shadow-md ring-1 ring-slate-200/70 transition-all duration-200 hover:bg-white hover:text-blue-600 hover:scale-110 active:scale-95"
+                  >
+                    <ChevronLeft className="size-5 transition-transform group-hover:-translate-x-0.5" />
+                  </button>
+                  <button
+                    onClick={isRtl ? prev : next}
+                    aria-label={isRtl ? "Previous slide" : "Next slide"}
+                    className="group absolute right-3 top-1/2 -translate-y-1/2 flex size-9 items-center justify-center rounded-full bg-white text-slate-600 shadow-md ring-1 ring-slate-200/70 transition-all duration-200 hover:bg-white hover:text-blue-600 hover:scale-110 active:scale-95"
+                  >
+                    <ChevronRight className="size-5 transition-transform group-hover:translate-x-0.5" />
+                  </button>
                 </div>
               </div>
 

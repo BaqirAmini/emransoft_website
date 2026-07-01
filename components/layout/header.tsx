@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { useTranslations } from "next-intl"
+import { useTranslations, useLocale } from "next-intl"
 import Image from "next/image"
 import { Menu, X, ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -27,6 +27,10 @@ const NAV_ITEMS: NavItem[] = [
 
 export function Header() {
   const t = useTranslations("nav")
+  const locale = useLocale()
+  const isRtl = locale === "fa" || locale === "ps"
+  // Arabic-script fonts read small at 14px; bump nav size for Dari/Pashto
+  const navText = isRtl ? "text-lg" : "text-sm"
   const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileOpen, setIsMobileOpen] = useState(false)
@@ -69,15 +73,38 @@ export function Header() {
       )}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2 shrink-0">
-          <Image
-            src="/images/logo/emransoft_logo.png"
-            alt="Emransoft"
-            width={88}
-            height={88}
-            priority
-            className="size-[88px] object-contain"
-          />
+        <Link href="/" className="flex items-center gap-2 shrink-0" aria-label="Emransoft home">
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, scale: 0.6, rotate: -12, x: -10 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0, x: 0 }}
+            transition={{ type: "spring", stiffness: 180, damping: 13, delay: 0.15 }}
+            whileHover={{ scale: 1.08, rotate: -3 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {/* recurring glow pulse behind the logo — draws the eye every few seconds */}
+            <motion.span
+              aria-hidden
+              className="pointer-events-none absolute inset-2 -z-10 rounded-full bg-blue-400/50 blur-xl"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: [0, 0.75, 0], scale: [0.5, 1.5, 1.9] }}
+              transition={{ duration: 1.4, delay: 1.3, repeatDelay: 4.7, repeat: Infinity, ease: "easeOut" }}
+            />
+            {/* recurring idle wiggle — subtle, plays automatically on an interval */}
+            <motion.div
+              animate={{ rotate: [0, -9, 8, -4, 0], scale: [1, 1.07, 1, 1.04, 1] }}
+              transition={{ duration: 1.1, delay: 1.5, repeatDelay: 5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Image
+                src="/images/logo/emransoft_logo.png"
+                alt="Emransoft"
+                width={88}
+                height={88}
+                priority
+                className="size-[88px] object-contain"
+              />
+            </motion.div>
+          </motion.div>
         </Link>
 
         <nav className="max-md:hidden md:flex items-center gap-1" ref={dropdownRef}>
@@ -88,7 +115,8 @@ export function Header() {
                   <button
                     onClick={() => setOpenDropdown(openDropdown === item.key ? null : item.key)}
                     className={cn(
-                      "flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
+                      "flex items-center gap-1 px-3 py-2 rounded-lg font-medium transition-colors",
+                      navText,
                       isActive(item.href)
                         ? "text-blue-600 bg-blue-50"
                         : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
@@ -143,7 +171,8 @@ export function Header() {
                 <Link
                   href={item.href}
                   className={cn(
-                    "px-3 py-2 rounded-lg text-sm font-medium transition-colors",
+                    "px-3 py-2 rounded-lg font-medium transition-colors",
+                    navText,
                     isActive(item.href)
                       ? "text-blue-600 bg-blue-50"
                       : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"

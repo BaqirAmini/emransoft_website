@@ -244,6 +244,105 @@ function CloudScene() {
   )
 }
 
+/* 6 — Database: reliable data management */
+function DatabaseScene() {
+  return (
+    <SceneWrap>
+      <defs>
+        <linearGradient id="db-fill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#60a5fa" />
+          <stop offset="1" stopColor="#2563eb" />
+        </linearGradient>
+      </defs>
+      {/* stacked cylinders */}
+      <g transform="translate(96 46)">
+        {[0, 40, 80].map((dy, i) => (
+          <g key={i} transform={`translate(0 ${dy})`} className="animate-pulse" style={{ animationDelay: `${i * 0.3}s`, animationDuration: "3s" }}>
+            <path d="M0 12 v34 a52 14 0 0 0 104 0 v-34" fill="url(#db-fill)" opacity={0.9 - i * 0.12} />
+            <ellipse cx="52" cy="12" rx="52" ry="14" fill="#93c5fd" />
+            <ellipse cx="52" cy="12" rx="52" ry="14" fill="none" stroke="#ffffff" strokeWidth="1.5" opacity="0.6" />
+          </g>
+        ))}
+      </g>
+      {/* query rows panel */}
+      <rect x="238" y="60" width="120" height="130" rx="10" fill="#ffffff" stroke="#e2e8f0" />
+      {[0, 1, 2, 3, 4].map((i) => (
+        <g key={i}>
+          <circle cx="252" cy={80 + i * 22} r="4" fill={["#2563eb", "#34d399", "#7c3aed", "#f59e0b", "#0ea5e9"][i]} />
+          <rect x="264" y={76 + i * 22} width={72 - (i % 3) * 14} height="8" rx="4" fill="#e2e8f0" />
+        </g>
+      ))}
+    </SceneWrap>
+  )
+}
+
+/* 7 — Automation: smart workflows */
+function AutomationScene() {
+  return (
+    <SceneWrap>
+      <defs>
+        <linearGradient id="auto-node" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#3b82f6" />
+          <stop offset="1" stopColor="#1d4ed8" />
+        </linearGradient>
+      </defs>
+      {/* flow connectors */}
+      <path d="M104 90 H160 a12 12 0 0 1 12 12 V150 a12 12 0 0 0 12 12 H240" fill="none" stroke="#bfdbfe" strokeWidth="3" strokeLinecap="round" />
+      <path d="M104 160 H150" fill="none" stroke="#bfdbfe" strokeWidth="3" strokeLinecap="round" />
+      {/* start block */}
+      <rect x="44" y="72" width="60" height="36" rx="10" fill="url(#auto-node)" />
+      <path d="M62 82 l16 8 l-16 8 z" fill="#ffffff" />
+      {/* middle block */}
+      <rect x="44" y="142" width="60" height="36" rx="10" fill="#ffffff" stroke="#2563eb" strokeWidth="2" />
+      <rect x="56" y="156" width="36" height="8" rx="4" fill="#93c5fd" />
+      {/* gear */}
+      <g transform="translate(184 108)" className="animate-pulse" style={{ animationDuration: "2.5s" }}>
+        <circle r="22" fill="#eff6ff" stroke="#2563eb" strokeWidth="2" />
+        <circle r="8" fill="#2563eb" />
+        {[0, 60, 120, 180, 240, 300].map((a) => (
+          <rect key={a} x="-3" y="-24" width="6" height="8" rx="2" fill="#2563eb" transform={`rotate(${a})`} />
+        ))}
+      </g>
+      {/* end block: success */}
+      <rect x="240" y="144" width="116" height="36" rx="10" fill="#064e3b" />
+      <circle cx="260" cy="162" r="8" fill="#34d399" />
+      <path d="M256 162 l3 3 l6 -7" stroke="#064e3b" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <rect x="276" y="158" width="66" height="8" rx="4" fill="#34d399" />
+    </SceneWrap>
+  )
+}
+
+/* 8 — Design: beautiful, intuitive UI */
+function DesignScene() {
+  return (
+    <SceneWrap>
+      <defs>
+        <linearGradient id="ux-accent" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#7c3aed" />
+          <stop offset="1" stopColor="#2563eb" />
+        </linearGradient>
+      </defs>
+      {/* canvas */}
+      <rect x="44" y="40" width="220" height="170" rx="12" fill="#ffffff" stroke="#e2e8f0" />
+      <rect x="60" y="56" width="80" height="14" rx="7" fill="url(#ux-accent)" />
+      <rect x="60" y="82" width="188" height="52" rx="8" fill="#eff6ff" />
+      <circle cx="86" cy="108" r="14" fill="#c4b5fd" />
+      <rect x="112" y="98" width="90" height="8" rx="4" fill="#bfdbfe" />
+      <rect x="112" y="112" width="60" height="8" rx="4" fill="#e2e8f0" />
+      <rect x="60" y="146" width="88" height="48" rx="8" fill="#f5f3ff" />
+      <rect x="160" y="146" width="88" height="48" rx="8" fill="#eff6ff" />
+      {/* toolbar / swatches */}
+      <rect x="284" y="40" width="72" height="170" rx="12" fill="#0f172a" />
+      {["#f472b6", "#818cf8", "#34d399", "#f59e0b"].map((c, i) => (
+        <circle key={c} cx="320" cy={68 + i * 30} r="11" fill={c} className="animate-pulse" style={{ animationDelay: `${i * 0.2}s` }} />
+      ))}
+      <rect x="304" y="180" width="32" height="10" rx="5" fill="#334155" />
+      {/* cursor */}
+      <path d="M214 168 l0 26 l7 -7 l5 10 l5 -3 l-5 -10 l10 0 z" fill="#1e293b" stroke="#ffffff" strokeWidth="1.5" />
+    </SceneWrap>
+  )
+}
+
 export type HeroScene = { id: string; label: string; Scene: () => ReactNode }
 
 export const heroScenes: HeroScene[] = [
@@ -251,5 +350,8 @@ export const heroScenes: HeroScene[] = [
   { id: "dashboard", label: "Analytics & reporting", Scene: DashboardScene },
   { id: "network", label: "Integrated systems", Scene: NetworkScene },
   { id: "devices", label: "Cross-platform apps", Scene: DevicesScene },
+  { id: "database", label: "Reliable data management", Scene: DatabaseScene },
+  { id: "automation", label: "Smart automation", Scene: AutomationScene },
+  { id: "design", label: "Intuitive design", Scene: DesignScene },
   { id: "cloud", label: "Secure cloud hosting", Scene: CloudScene },
 ]
