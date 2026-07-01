@@ -20,13 +20,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const titles: Record<string, string> = {
     fa: "اخبار | عمران سافت",
     en: "News | Emransoft",
-    ps: "خبرونه | امَرانسافت",
+    ps: "خبرونه | عمران سافت",
   }
 
   const descriptions: Record<string, string> = {
     fa: "با آخرین اخبار و اعلامیه‌های عمران سافت به‌روز بمانید.",
     en: "Stay updated with the latest news and announcements from Emransoft.",
-    ps: "د امَرانسافت څخه د وروستيو خبرونو او اعلانونو سره تازه اوسئ.",
+    ps: "د عمران سافت څخه د وروستيو خبرونو او اعلانونو سره تازه اوسئ.",
   }
 
   const title = titles[locale] || titles.en
