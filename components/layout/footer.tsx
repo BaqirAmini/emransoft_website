@@ -6,6 +6,12 @@ import { Link } from "@/i18n/navigation"
 import { COMPANY, SOCIAL, NAV_LINKS } from "@/constants"
 import { products } from "@/data/products"
 
+const productLogoMap: Record<string, string> = {
+  crown: "/images/logo/crown_logo_blue.png",
+  labra: "/images/logo/labra_logo.ico",
+  tajviz: "/images/logo/tajviz_logo.png",
+}
+
 export function Footer() {
   const t = useTranslations("footer")
   const currentYear = new Date().getFullYear()
@@ -52,8 +58,17 @@ export function Footer() {
                 <li key={product.id}>
                   <Link
                     href={`/products#${product.id}`}
-                    className="text-sm text-slate-400 hover:text-white transition-colors"
+                    className="group flex items-center gap-2.5 text-sm text-slate-400 hover:text-white transition-colors"
                   >
+                    <span className="flex size-7 items-center justify-center rounded-lg bg-white/95 p-1 shadow-sm transition-transform duration-200 group-hover:scale-110">
+                      <Image
+                        src={productLogoMap[product.icon] || "/images/logo/emransoft_logo.png"}
+                        alt={product.name}
+                        width={24}
+                        height={24}
+                        className="size-5 object-contain"
+                      />
+                    </span>
                     {product.name}
                   </Link>
                 </li>

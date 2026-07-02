@@ -1,18 +1,18 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Image from "next/image"
 import { Calendar, ArrowRight, Star } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/navigation"
 import { Badge } from "@/components/ui/badge"
+import { NewsCover } from "@/components/news/NewsCover"
 import type { ArticleMeta } from "@/lib/news"
 
 interface FeaturedNewsProps {
   article: ArticleMeta
 }
 
-export function FeaturedNews({ article }: FeaturedNewsProps) {
+export function FeaturedNews({ article }: Readonly<FeaturedNewsProps>) {
   const t = useTranslations("news")
 
   return (
@@ -23,16 +23,10 @@ export function FeaturedNews({ article }: FeaturedNewsProps) {
       className="group relative rounded-2xl border border-slate-100 bg-white shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
     >
       <Link href={`/news/${article.slug}`} className="block md:grid md:grid-cols-2 md:gap-0">
-        <div className="relative aspect-[4/3] md:aspect-auto md:h-full min-h-[280px] bg-slate-100">
-          <Image
-            src={article.coverImage}
-            alt={article.title}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
-          <div className="absolute top-4 left-4">
-            <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 text-amber-700 border border-amber-200 px-3 py-1 text-xs font-medium">
+        <div className="relative aspect-4/3 md:aspect-auto md:h-full min-h-70">
+          <NewsCover tags={article.tags} slug={article.slug} showLabel={false} className="absolute inset-0 size-full" />
+          <div className="absolute top-4 left-4 z-10">
+            <span className="inline-flex items-center gap-1 rounded-full bg-white/95 text-amber-700 border border-amber-200 px-3 py-1 text-xs font-medium shadow-sm">
               <Star className="size-3 fill-amber-500 text-amber-500" />
               Featured
             </span>
