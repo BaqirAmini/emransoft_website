@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { GoogleAnalytics } from "@next/third-parties/google"
 
 export const metadata: Metadata = {
   icons: {
@@ -14,6 +15,9 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning>
       <body>{children}</body>
+      {process.env.NODE_ENV === "production" && (
+        <GoogleAnalytics gaId="G-3JKLZD5N1Y" />
+      )}
     </html>
   )
 }
