@@ -7,12 +7,12 @@ import { Section, SectionHeader } from "@/components/ui/section"
 import { Card } from "@/components/ui/card"
 import { testimonials } from "@/data/testimonials"
 
-export function Testimonials() {
+export function Testimonials({ hideHeader }: { hideHeader?: boolean }) {
   const t = useTranslations("testimonials")
 
   return (
     <Section className="bg-slate-50/50">
-      <SectionHeader title={t("title")} subtitle={t("subtitle")} />
+      {!hideHeader && <SectionHeader title={t("title")} subtitle={t("subtitle")} />}
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {testimonials.map((testimonial, index) => (

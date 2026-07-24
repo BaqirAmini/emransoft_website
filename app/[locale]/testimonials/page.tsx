@@ -20,7 +20,7 @@ export default function TestimonialsPage() {
           </p>
         </div>
       </Section>
-      <Testimonials />
+      <Testimonials hideHeader />
       <CTA />
     </>
   )
