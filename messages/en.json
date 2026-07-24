@@ -119,7 +119,41 @@
   },
   "features": {
     "title": "Why Choose Emransoft",
-    "subtitle": "We build software that works reliably in Afghanistan's unique environment."
+    "subtitle": "We build software that works reliably in Afghanistan's unique environment.",
+    "items": {
+      "reliable": {
+        "title": "Reliable",
+        "description": "Built on proven technology. Our software runs reliably, day in and day out, without unexpected failures."
+      },
+      "offline": {
+        "title": "Offline Solutions",
+        "description": "Internet connectivity can be challenging. Our software works fully offline, syncing when connected."
+      },
+      "secure": {
+        "title": "Secure",
+        "description": "Your data is encrypted and protected. We follow best practices to ensure patient and business information stays safe."
+      },
+      "fast": {
+        "title": "Fast Performance",
+        "description": "Optimized for speed. Our applications launch quickly and respond instantly, saving valuable time every day."
+      },
+      "support": {
+        "title": "Professional Support",
+        "description": "Our team provides prompt, professional support. We are available via WhatsApp, Telegram, and email."
+      },
+      "easy": {
+        "title": "Easy to Use",
+        "description": "Designed with the end user in mind. Intuitive interfaces mean minimal training and maximum productivity."
+      },
+      "modern": {
+        "title": "Modern Technology",
+        "description": "Built with modern software architecture. Our products use the latest technology for performance and scalability."
+      },
+      "future": {
+        "title": "Future Ready",
+        "description": "Designed to grow with your business. Regular updates and new features ensure you stay ahead of the curve."
+      }
+    }
   },
   "screenshots": {
     "title": "See It in Action",

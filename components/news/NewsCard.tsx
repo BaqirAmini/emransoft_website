@@ -1,11 +1,11 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Image from "next/image"
 import { Calendar, ArrowRight } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/navigation"
 import { Badge } from "@/components/ui/badge"
+import { NewsCover } from "@/components/news/NewsCover"
 import type { ArticleMeta } from "@/lib/news"
 
 interface NewsCardProps {
@@ -13,7 +13,7 @@ interface NewsCardProps {
   index?: number
 }
 
-export function NewsCard({ article, index = 0 }: NewsCardProps) {
+export function NewsCard({ article, index = 0 }: Readonly<NewsCardProps>) {
   const t = useTranslations("news")
 
   return (
@@ -26,15 +26,7 @@ export function NewsCard({ article, index = 0 }: NewsCardProps) {
       className="group rounded-2xl border border-slate-100 bg-white shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
     >
       <Link href={`/news/${article.slug}`} className="block">
-        <div className="relative aspect-[16/9] overflow-hidden bg-slate-100">
-          <Image
-            src={article.coverImage}
-            alt={article.title}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-        </div>
+        <NewsCover tags={article.tags} slug={article.slug} className="aspect-video" />
       </Link>
 
       <div className="flex-1 flex flex-col p-5 md:p-6">

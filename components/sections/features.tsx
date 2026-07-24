@@ -67,10 +67,10 @@ export function Features() {
                   <Icon className="size-6" />
                 </CardIcon>
                 <h3 className="text-lg font-semibold text-slate-900 mb-2">
-                  {feature.title}
+                  {t(`items.${feature.id}.title`)}
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed">
-                  {feature.description}
+                  {t(`items.${feature.id}.description`)}
                 </p>
               </Card>
             </motion.div>

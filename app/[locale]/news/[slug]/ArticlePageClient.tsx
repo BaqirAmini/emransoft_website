@@ -1,13 +1,12 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Image from "next/image"
 import { Calendar, User, ArrowLeft, ArrowRight, ChevronLeft } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/navigation"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { RelatedNews } from "@/components/news/RelatedNews"
+import { getNewsTheme } from "@/components/news/news-theme"
 import { MDXRenderer } from "./MDXRenderer"
 import type { Article, ArticleMeta } from "@/lib/news"
 
@@ -25,8 +24,9 @@ export function ArticlePageClient({
   nextArticle,
   relatedArticles,
   locale,
-}: ArticlePageClientProps) {
+}: Readonly<ArticlePageClientProps>) {
   const t = useTranslations("news")
+  const theme = getNewsTheme(article.tags)
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -56,40 +56,65 @@ export function ArticlePageClient({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <article className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
+      <article className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          <Link
+            href="/news"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-blue-600 transition-colors mb-6"
           >
-            <Link
-              href="/news"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-blue-600 transition-colors mb-8"
-            >
-              <ChevronLeft className="size-4" />
-              {t("backToNews")}
-            </Link>
-          </motion.div>
+            <ChevronLeft className="size-4" />
+            {t("backToNews")}
+          </Link>
+        </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <div className="flex flex-wrap gap-2 mb-4">
+        {/* Branded article hero — creative, screenshot-free */}
+        <motion.header
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className={`relative overflow-hidden rounded-3xl bg-linear-to-br ${theme.gradient} px-6 py-10 sm:px-10 sm:py-14 shadow-xl`}
+        >
+          {/* decorative orbs + pattern */}
+          <div className="absolute -right-16 -top-16 size-56 rounded-full bg-white/10" />
+          <div className="absolute right-10 top-16 size-24 rounded-full bg-white/10" />
+          <div className="absolute -left-12 -bottom-16 size-56 rounded-full bg-black/10" />
+          <div
+            className="absolute inset-0 opacity-[0.15]"
+            style={{
+              backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)",
+              backgroundSize: "20px 20px",
+            }}
+          />
+          <theme.Icon
+            className="pointer-events-none absolute -right-4 -bottom-6 size-52 text-white/10"
+            strokeWidth={1}
+          />
+
+          <div className="relative z-10">
+            <div className="flex flex-wrap gap-2 mb-5">
               {article.tags.map((tag) => (
-                <Badge key={tag} variant="blue">
+                <span
+                  key={tag}
+                  className="inline-flex items-center rounded-full bg-white/20 px-3 py-1 text-xs font-semibold text-white ring-1 ring-white/30"
+                >
                   {tag}
-                </Badge>
+                </span>
               ))}
             </div>
 
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 leading-tight">
+            <h1 className="max-w-3xl text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
               {article.title}
             </h1>
 
-            <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-slate-500">
+            <p className="mt-4 max-w-2xl text-base md:text-lg text-white/85 leading-relaxed">
+              {article.description}
+            </p>
+
+            <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-white/80">
               <span className="flex items-center gap-1.5">
                 <Calendar className="size-4" />
                 {t("publishedOn")} {article.date}
@@ -99,24 +124,8 @@ export function ArticlePageClient({
                 {t("by")} {article.author}
               </span>
             </div>
-          </motion.div>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-8 md:mt-10 relative aspect-[2/1] rounded-2xl overflow-hidden bg-slate-100"
-        >
-          <Image
-            src={article.coverImage}
-            alt={article.title}
-            fill
-            className="object-cover"
-            priority
-            sizes="(max-width: 1200px) 100vw, 1200px"
-          />
-        </motion.div>
+          </div>
+        </motion.header>
 
         <div className="max-w-3xl mx-auto">
           <motion.div
@@ -146,7 +155,7 @@ export function ArticlePageClient({
                     <span className="block text-xs text-slate-400 mb-0.5">
                       {t("previousArticle")}
                     </span>
-                    <span className="line-clamp-1 max-w-[200px]">{prevArticle.title}</span>
+                    <span className="line-clamp-1 max-w-50">{prevArticle.title}</span>
                   </div>
                 </Link>
               )}
@@ -162,7 +171,7 @@ export function ArticlePageClient({
                     <span className="block text-xs text-slate-400 mb-0.5">
                       {t("nextArticle")}
                     </span>
-                    <span className="line-clamp-1 max-w-[200px]">{nextArticle.title}</span>
+                    <span className="line-clamp-1 max-w-50">{nextArticle.title}</span>
                   </div>
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                 </Link>
