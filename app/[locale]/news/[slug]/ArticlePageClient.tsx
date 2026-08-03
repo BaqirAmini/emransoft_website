@@ -1,5 +1,6 @@
 "use client"
 
+import type { ReactNode } from "react"
 import { motion } from "framer-motion"
 import { Calendar, User, ArrowLeft, ArrowRight, ChevronLeft } from "lucide-react"
 import { useTranslations } from "next-intl"
@@ -7,11 +8,12 @@ import { Link } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { RelatedNews } from "@/components/news/RelatedNews"
 import { getNewsTheme } from "@/components/news/news-theme"
-import { MDXRenderer } from "./MDXRenderer"
 import type { Article, ArticleMeta } from "@/lib/news"
 
 interface ArticlePageClientProps {
   article: Article
+  /** MDX rendered on the server and passed in (async rendering can't run in a client component) */
+  renderedContent: ReactNode
   prevArticle: ArticleMeta | null
   nextArticle: ArticleMeta | null
   relatedArticles: ArticleMeta[]
@@ -20,6 +22,7 @@ interface ArticlePageClientProps {
 
 export function ArticlePageClient({
   article,
+  renderedContent,
   prevArticle,
   nextArticle,
   relatedArticles,
@@ -134,7 +137,7 @@ export function ArticlePageClient({
             transition={{ duration: 0.5, delay: 0.3 }}
           >
             <div className="prose-wrapper mt-10 md:mt-12">
-              <MDXRenderer content={article.content} />
+              {renderedContent}
             </div>
           </motion.div>
 

@@ -9,6 +9,7 @@ import {
   getRelatedArticles,
 } from "@/lib/news"
 import { ArticlePageClient } from "./ArticlePageClient"
+import { MDXRenderer } from "./MDXRenderer"
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>
@@ -95,6 +96,7 @@ export default async function ArticlePage({ params }: Props) {
   return (
     <ArticlePageClient
       article={article}
+      renderedContent={<MDXRenderer content={article.content} />}
       prevArticle={prevArticle}
       nextArticle={nextArticle}
       relatedArticles={related}
