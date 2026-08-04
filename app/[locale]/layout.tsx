@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { NextIntlClientProvider } from "next-intl"
 import { getMessages, setRequestLocale } from "next-intl/server"
-import { Geist } from "next/font/google"
+import { Geist, Vazirmatn } from "next/font/google"
 import { routing } from "@/i18n/routing"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
@@ -12,6 +12,12 @@ import "../globals.css"
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+})
+
+// Persian/Arabic-script font for Dari & Pashto (variable font, weights 100–900).
+const vazirmatn = Vazirmatn({
+  variable: "--font-vazirmatn",
+  subsets: ["arabic", "latin"],
 })
 
 const isRtl = (locale: string) => locale === "fa" || locale === "ps"
@@ -25,10 +31,8 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
 }
 
-export async function generateMetadata({ params }: LocaleLayoutProps): Promise<Metadata> {
+export async function generateMetadata({ params }: Readonly<LocaleLayoutProps>): Promise<Metadata> {
   const { locale } = await params
-  const isDari = locale === "fa"
-  const isEnglish = locale === "en"
 
   const titles: Record<string, string> = {
     fa: "عمران سافت | راه حلهای نرم‌افزاری حرفه ای برای افغانستان",
@@ -42,13 +46,15 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
     ps: "د باور وړ سافټویر جوړول چې د روغتیا پاملرنې مرکزونو او سوداګرۍ ته په ټول افغانستان کې ځواک ورکوي.",
   }
 
+  const ogLocales: Record<string, string> = { fa: "fa_AF", ps: "ps_AF", en: "en_US" }
+
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
     openGraph: {
       title: titles[locale] || titles.en,
       description: descriptions[locale] || descriptions.en,
-      locale: locale === "fa" ? "fa_AF" : locale === "ps" ? "ps_AF" : "en_US",
+      locale: ogLocales[locale] || ogLocales.en,
       type: "website",
       siteName: "Emransoft",
     },
@@ -59,7 +65,7 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
   }
 }
 
-export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
+export default async function LocaleLayout({ children, params }: Readonly<LocaleLayoutProps>) {
   const { locale } = await params
 
   if (!routing.locales.includes(locale as "fa" | "en" | "ps")) {
@@ -72,7 +78,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <LocaleProvider locale={locale} dir={dir} className={`${geistSans.variable}`}>
+      <LocaleProvider locale={locale} dir={dir} className={`${geistSans.variable} ${vazirmatn.variable}`}>
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
