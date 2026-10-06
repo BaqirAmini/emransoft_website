@@ -101,7 +101,7 @@ export function Header() {
                 width={88}
                 height={88}
                 priority
-                className="size-[88px] object-contain"
+                className="size-22 object-contain"
               />
             </motion.div>
           </motion.div>

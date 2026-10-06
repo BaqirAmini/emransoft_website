@@ -56,7 +56,7 @@ export function Statistics() {
   const t = useTranslations("statistics")
 
   return (
-    <Section className="bg-gradient-to-b from-white to-blue-50/30">
+    <Section className="bg-linear-to-b from-white to-blue-50/30">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

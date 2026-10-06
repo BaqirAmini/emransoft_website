@@ -70,7 +70,7 @@ export function Screenshots() {
                 </div>
               </div>
 
-              <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-slate-50 to-white">
+              <div className="relative aspect-16/10 overflow-hidden bg-linear-to-br from-slate-50 to-white">
                 <AnimatePresence mode="wait" custom={direction}>
                   <motion.div
                     key={current}
