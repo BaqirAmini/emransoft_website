@@ -10,6 +10,7 @@ const productLogoMap: Record<string, string> = {
   crown: "/images/logo/crown_logo_blue.png",
   labra: "/images/logo/labra_logo.ico",
   tajviz: "/images/logo/tajviz_logo.png",
+  pazira: "/images/logo/pazira_logo.png",
 }
 
 export function Footer() {

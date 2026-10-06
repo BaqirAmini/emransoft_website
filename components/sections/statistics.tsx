@@ -48,7 +48,7 @@ function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
 const stats = [
   { id: "provinces", value: 10, suffix: "+" },
   { id: "customers", value: 100, suffix: "+" },
-  { id: "products", value: 3, suffix: "" },
+  { id: "products", value: 4, suffix: "" },
   { id: "growth", value: 100, suffix: "%" },
 ]
 

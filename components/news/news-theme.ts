@@ -2,6 +2,7 @@ import {
   Stethoscope,
   FlaskConical,
   Pill,
+  PartyPopper,
   MessageCircle,
   Globe,
   Megaphone,
@@ -32,6 +33,7 @@ const THEMES: Record<string, ThemeDef> = {
   Crown: { gradient: "from-blue-600 via-blue-500 to-sky-400", Icon: Stethoscope },
   Labra: { gradient: "from-emerald-600 via-emerald-500 to-teal-400", Icon: FlaskConical },
   Tajviz: { gradient: "from-violet-600 via-purple-500 to-fuchsia-400", Icon: Pill },
+  Pazira: { gradient: "from-rose-700 via-pink-600 to-fuchsia-400", Icon: PartyPopper },
   WhatsApp: { gradient: "from-green-600 via-emerald-500 to-teal-400", Icon: MessageCircle },
   Website: { gradient: "from-sky-600 via-cyan-500 to-blue-400", Icon: Globe },
   Announcement: { gradient: "from-indigo-600 via-blue-500 to-sky-400", Icon: Megaphone },
@@ -46,6 +48,7 @@ const PRIORITY = [
   "Crown",
   "Labra",
   "Tajviz",
+  "Pazira",
   "WhatsApp",
   "Website",
   "Announcement",
@@ -59,13 +62,14 @@ const PRIORITY = [
 // translated article gets the SAME colour/icon as its English counterpart.
 const ALIASES: Record<string, string> = {
   // English
-  Crown: "Crown", Labra: "Labra", Tajviz: "Tajviz", WhatsApp: "WhatsApp",
+  Crown: "Crown", Labra: "Labra", Tajviz: "Tajviz", Pazira: "Pazira", WhatsApp: "WhatsApp",
   Website: "Website", Announcement: "Announcement", Expansion: "Expansion",
   Company: "Company", Update: "Update", Product: "Product",
   // Dari / Pashto (shared where identical)
   "کرون": "Crown",
   "لابرا": "Labra",
   "تجویز": "Tajviz",
+  "پذیرا": "Pazira",
   "واتساپ": "WhatsApp", // Dari
   "واټساپ": "WhatsApp", // Pashto
   "وبسایت": "Website", // Dari

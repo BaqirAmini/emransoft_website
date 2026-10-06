@@ -72,4 +72,27 @@ export const products: Product[] = [
     color: "#7C3AED",
     gradient: "from-violet-600 to-violet-400",
   },
+  {
+    id: "pazira",
+    name: "Pazira",
+    tagline: "Wedding Hall Management System",
+    description:
+      "Run your wedding hall with confidence, from bookings and event scheduling to payments and catering. Pazira brings order and clarity to every ceremony, from the first booking to the final invoice.",
+    slogan: "Pazira; Smart Event Management!",
+    features: [
+      "Hall Booking Management",
+      "Event Calendar & Scheduling",
+      "Customer Management",
+      "Multi-Hall Support",
+      "Payments & Installment Tracking",
+      "Expense Tracking",
+      "Food & Catering Management",
+      "Staff & Partner Management",
+      "Financial Reports",
+      "Invoice & Ticket Printing",
+    ],
+    icon: "pazira",
+    color: "#9D174D",
+    gradient: "from-rose-700 to-pink-400",
+  },
 ]

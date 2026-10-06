@@ -9,6 +9,8 @@ import { Section, SectionHeader } from "@/components/ui/section"
 import { Button } from "@/components/ui/button"
 
 const screenshots = [
+  { id: "pazira-dashboard", title: "Pazira Dashboard", description: "Real-time overview of bookings, revenue, and upcoming ceremonies", image: "/images/screenshots/pazira-dashboard.png" },
+  { id: "pazira-invoice", title: "Pazira Booking Invoice", description: "Professional booking tickets and invoices for every ceremony", image: "/images/screenshots/pazira-invoice.png" },
   { id: "crown-dashboard", title: "Crown Dashboard", description: "Complete clinic overview at a glance", image: "/images/screenshots/crown-dashboard.png" },
   { id: "crown-patients", title: "Patient Management", description: "Efficient patient record management", image: "/images/screenshots/patients-management.png" },
   { id: "crown-billing", title: "Billing & Invoicing", description: "Professional billing with installment tracking", image: "/images/screenshots/billing-invoicing.png" },

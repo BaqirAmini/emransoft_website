@@ -18,12 +18,14 @@ const logoMap: Record<string, string> = {
   crown: "/images/logo/crown_logo_blue.png",
   labra: "/images/logo/labra_logo.ico",
   tajviz: "/images/logo/tajviz_logo.png",
+  pazira: "/images/logo/pazira_logo.png",
 }
 
 const tKeyMap: Record<string, string> = {
   crown: "productCrown",
   labra: "productLabra",
   tajviz: "productTajviz",
+  pazira: "productPazira",
 }
 
 export function ProductCard({ product, index }: ProductCardProps) {
@@ -31,7 +33,8 @@ export function ProductCard({ product, index }: ProductCardProps) {
   const productsT = useTranslations("products")
 
   const c = product.color
-  const badgeVariant = index === 0 ? "blue" : index === 1 ? "emerald" : "violet"
+  const badgeVariant =
+    index === 0 ? "blue" : index === 1 ? "emerald" : index === 2 ? "violet" : "rose"
 
   return (
     <motion.div

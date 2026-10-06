@@ -29,7 +29,7 @@
   "statistics": {
     "provinces": "10+ Provinces",
     "customers": "100+ Happy Customers",
-    "products": "3 Professional Products",
+    "products": "4 Professional Products",
     "growth": "Growing Every Year"
   },
   "products": {
@@ -89,6 +89,23 @@
       "7": "Prescription Archive",
       "8": "Multi Language Support",
       "9": "Offline Mode"
+    }
+  },
+  "productPazira": {
+    "tagline": "Wedding Hall Management System",
+    "slogan": "Pazira; Smart Event Management!",
+    "description": "Run your wedding hall with confidence, from bookings and event scheduling to payments and catering. Pazira brings order and clarity to every ceremony, from the first booking to the final invoice.",
+    "features": {
+      "0": "Hall Booking Management",
+      "1": "Event Calendar & Scheduling",
+      "2": "Customer Management",
+      "3": "Multi-Hall Support",
+      "4": "Payments & Installment Tracking",
+      "5": "Expense Tracking",
+      "6": "Food & Catering Management",
+      "7": "Staff & Partner Management",
+      "8": "Financial Reports",
+      "9": "Invoice & Ticket Printing"
     }
   },
   "map": {
