@@ -2,8 +2,13 @@ import type { Metadata } from "next"
 import { routing } from "@/i18n/routing"
 import { COMPANY, SOCIAL } from "@/constants"
 
-/** Public origin of the site, without a trailing slash. Override with NEXT_PUBLIC_SITE_URL if the domain changes. */
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://emransoft.com").replace(/\/+$/, "")
+/**
+ * Public origin of the site, without a trailing slash. Must match the primary
+ * domain on Vercel (emransoft.com 308-redirects to www), otherwise canonicals,
+ * hreflang and the sitemap would point at redirecting URLs.
+ * Override with NEXT_PUBLIC_SITE_URL if the primary domain changes.
+ */
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.emransoft.com").replace(/\/+$/, "")
 
 export const SITE_NAME = COMPANY.name
 
