@@ -26,39 +26,13 @@ export function ArticlePageClient({
   prevArticle,
   nextArticle,
   relatedArticles,
-  locale,
 }: Readonly<ArticlePageClientProps>) {
   const t = useTranslations("news")
   const theme = getNewsTheme(article.tags)
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: article.title,
-    description: article.description,
-    image: article.coverImage,
-    datePublished: article.date,
-    author: {
-      "@type": "Person",
-      name: article.author,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Emransoft",
-    },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `https://emransoft.com/${locale === "fa" ? "" : locale}/news/${article.slug}`,
-    },
-  }
-
+  // Structured data (NewsArticle + BreadcrumbList) is rendered by the server page.tsx.
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-
       <article className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <motion.div
           initial={{ opacity: 0, y: -10 }}

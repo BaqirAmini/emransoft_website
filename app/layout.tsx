@@ -1,21 +1,20 @@
-import { GoogleAnalytics } from "@next/third-parties/google"
+import type { Metadata } from "next"
+import { SITE_URL } from "@/lib/seo"
 
-// The favicon is provided by the App Router file convention: app/icon.png
-// (a transparent version of the brand mark). No metadata.icons override
-// is needed — Next injects the <link rel="icon"> automatically.
+// The <html>/<body> tags live in app/[locale]/layout.tsx so the server-rendered
+// HTML carries the correct lang/dir for each locale (important for SEO).
+// This root layout only passes children through, as recommended by next-intl.
+//
+// The favicon is provided by the App Router file convention: app/icon.png.
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return (
-    // lang is a sensible SSR default; LocaleProvider updates it per locale at runtime.
-    <html lang="en" suppressHydrationWarning>
-      <body>{children}</body>
-      {process.env.NODE_ENV === "production" && (
-        <GoogleAnalytics gaId="G-3JKLZD5N1Y" />
-      )}
-    </html>
-  )
+  return children
 }

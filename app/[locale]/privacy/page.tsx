@@ -1,33 +1,24 @@
-"use client"
+import type { Metadata } from "next"
+import { getTranslations, setRequestLocale } from "next-intl/server"
+import { buildPageMetadata, pageTitle, truncate } from "@/lib/seo"
+import PrivacyPageClient from "./PrivacyPageClient"
 
-import { useTranslations } from "next-intl"
-import { Card } from "@/components/ui/card"
+type Props = { params: Promise<{ locale: string }> }
 
-export default function PrivacyPage() {
-  const t = useTranslations("privacy")
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: "privacy" })
 
-  return (
-    <div className="pt-32 pb-20">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mb-8">
-          {t("title")}
-        </h1>
-        <Card>
-          <div className="space-y-6 text-sm text-slate-600 leading-relaxed">
-            <p>{t("lastUpdated")}</p>
-            <h2 className="text-xl font-semibold text-slate-900">{t("section1Title")}</h2>
-            <p>{t("intro")}</p>
-            <h2 className="text-xl font-semibold text-slate-900">{t("section1Title")}</h2>
-            <p>{t("section1Desc")}</p>
-            <h2 className="text-xl font-semibold text-slate-900">{t("section2Title")}</h2>
-            <p>{t("section2Desc")}</p>
-            <h2 className="text-xl font-semibold text-slate-900">{t("section3Title")}</h2>
-            <p>{t("section3Desc")}</p>
-            <h2 className="text-xl font-semibold text-slate-900">{t("section4Title")}</h2>
-            <p>{t("section4Desc", { email: "info@emransoft.com" })}</p>
-          </div>
-        </Card>
-      </div>
-    </div>
-  )
+  return buildPageMetadata({
+    locale,
+    path: "/privacy",
+    title: pageTitle(locale, t("title")),
+    description: truncate(t("intro")),
+  })
+}
+
+export default async function PrivacyPage({ params }: Props) {
+  const { locale } = await params
+  setRequestLocale(locale)
+  return <PrivacyPageClient />
 }

@@ -1,7 +1,8 @@
 import type { Metadata } from "next"
-import { setRequestLocale, getTranslations } from "next-intl/server"
+import { setRequestLocale } from "next-intl/server"
 import { routing } from "@/i18n/routing"
 import { getArticles, getArticleTags } from "@/lib/news"
+import { buildPageMetadata } from "@/lib/seo"
 import { NewsListingClient } from "./NewsListingClient"
 
 type Props = {
@@ -12,50 +13,27 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
 }
 
+const titles: Record<string, string> = {
+  fa: "اخبار | عمران سافت",
+  en: "News | Emransoft",
+  ps: "خبرونه | عمران سافت",
+}
+
+const descriptions: Record<string, string> = {
+  fa: "با آخرین اخبار و اعلامیه‌های عمران سافت به‌روز بمانید.",
+  en: "Stay updated with the latest news and announcements from Emransoft.",
+  ps: "د عمران سافت څخه د وروستيو خبرونو او اعلانونو سره تازه اوسئ.",
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
-  const t = await getTranslations({ locale, namespace: "news" })
-  const baseUrl = "https://emransoft.com"
 
-  const titles: Record<string, string> = {
-    fa: "اخبار | عمران سافت",
-    en: "News | Emransoft",
-    ps: "خبرونه | عمران سافت",
-  }
-
-  const descriptions: Record<string, string> = {
-    fa: "با آخرین اخبار و اعلامیه‌های عمران سافت به‌روز بمانید.",
-    en: "Stay updated with the latest news and announcements from Emransoft.",
-    ps: "د عمران سافت څخه د وروستيو خبرونو او اعلانونو سره تازه اوسئ.",
-  }
-
-  const title = titles[locale] || titles.en
-  const description = descriptions[locale] || descriptions.en
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      locale: locale === "fa" ? "fa_AF" : locale === "ps" ? "ps_AF" : "en_US",
-      type: "website",
-      siteName: "Emransoft",
-      url: `${baseUrl}/${locale === "en" ? "en" : ""}/news`,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-    },
-    alternates: {
-      canonical: `${baseUrl}/${locale === "fa" ? "" : locale}/news`,
-    },
-    robots: {
-      index: true,
-      follow: true,
-    },
-  }
+  return buildPageMetadata({
+    locale,
+    path: "/news",
+    title: titles[locale] || titles.en,
+    description: descriptions[locale] || descriptions.en,
+  })
 }
 
 export default async function NewsPage({ params }: Props) {

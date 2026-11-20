@@ -5,7 +5,9 @@ import { Section, SectionHeader } from "@/components/ui/section"
 import { ProductCard } from "@/components/products/product-card"
 import { products } from "@/data/products"
 
-export function ProductsGrid() {
+export function ProductsGrid({
+  headingLevel = "h2",
+}: Readonly<{ headingLevel?: "h1" | "h2" }>) {
   const t = useTranslations("products")
 
   return (
@@ -13,6 +15,7 @@ export function ProductsGrid() {
       <SectionHeader
         title={t("title")}
         subtitle={t("subtitle")}
+        headingLevel={headingLevel}
       />
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {products.map((product, index) => (

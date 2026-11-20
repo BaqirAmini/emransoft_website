@@ -43,12 +43,16 @@ function SectionHeader({
   subtitle,
   centered = true,
   className,
+  headingLevel = "h2",
 }: {
   title: string
   subtitle?: string
   centered?: boolean
   className?: string
+  /** Use "h1" when this header is the page's main heading (one h1 per page for SEO). */
+  headingLevel?: "h1" | "h2"
 }) {
+  const Heading = headingLevel
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -61,9 +65,9 @@ function SectionHeader({
         className
       )}
     >
-      <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900">
+      <Heading className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900">
         {title}
-      </h2>
+      </Heading>
       {subtitle && (
         <p className="mt-4 text-lg md:text-xl text-slate-600 leading-relaxed">
           {subtitle}

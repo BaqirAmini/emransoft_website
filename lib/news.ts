@@ -97,22 +97,13 @@ export function getAllSlugs(locale: string): string[] {
     .map((f) => f.replace(".mdx", ""))
 }
 
+/** Locales in which an article with this slug exists (slug from frontmatter, falling back to the filename). */
 export function getAvailableLocales(slug: string): string[] {
-  const locales: string[] = []
-  const dirs = fs.readdirSync(CONTENT_DIR)
-  for (const locale of dirs) {
-    const localeDir = path.join(CONTENT_DIR, locale)
-    if (!fs.statSync(localeDir).isDirectory()) continue
-    const files = fs.readdirSync(localeDir)
-    for (const file of files) {
-      const result = readArticleFile(path.join(localeDir, file))
-      if (result && (result.data.slug as string) === slug) {
-        locales.push(locale)
-        break
-      }
-    }
+  const locales = new Set<string>()
+  for (const entry of getAllArticleSlugs()) {
+    if (entry.slug === slug) locales.add(entry.locale)
   }
-  return locales
+  return Array.from(locales)
 }
 
 export function getAllArticleSlugs(): { locale: string; slug: string }[] {

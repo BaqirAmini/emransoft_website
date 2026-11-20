@@ -52,7 +52,7 @@ export function NewsListingClient({ articles, allTags, locale }: NewsListingClie
 
   return (
     <Section>
-      <SectionHeader title={t("title")} subtitle={t("subtitle")} />
+      <SectionHeader title={t("title")} subtitle={t("subtitle")} headingLevel="h1" />
 
       <div className="mb-10 space-y-6">
         <div className="max-w-md">

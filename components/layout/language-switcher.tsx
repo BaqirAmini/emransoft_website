@@ -1,8 +1,8 @@
 "use client"
 
 import { useLocale } from "next-intl"
-import { usePathname, useRouter } from "@/i18n/navigation"
-import { useTransition, useState, useRef, useEffect } from "react"
+import { Link, usePathname } from "@/i18n/navigation"
+import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
 import { ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -17,8 +17,6 @@ const localeNames: Record<string, { label: string; flag: string; src: string }> 
 export function LanguageSwitcher() {
   const locale = useLocale()
   const pathname = usePathname()
-  const router = useRouter()
-  const [isPending, startTransition] = useTransition()
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
@@ -34,13 +32,6 @@ export function LanguageSwitcher() {
     return () => document.removeEventListener("mousedown", handleClickOutside)
   }, [])
 
-  function switchLocale(nextLocale: string) {
-    setOpen(false)
-    startTransition(() => {
-      router.replace(pathname, { locale: nextLocale })
-    })
-  }
-
   return (
     <div className="relative" ref={ref}>
       <button
@@ -48,8 +39,7 @@ export function LanguageSwitcher() {
         className={cn(
           "flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-medium",
           "text-slate-600 hover:text-slate-900 hover:bg-slate-100",
-          "transition-all duration-200",
-          isPending && "opacity-50 pointer-events-none"
+          "transition-all duration-200"
         )}
         aria-label="Switch language"
         aria-expanded={open}
@@ -72,9 +62,17 @@ export function LanguageSwitcher() {
             const info = localeNames[loc]
             const isActive = loc === locale
             return (
-              <button
+              // Real <a href> links (not buttons) so search engines can discover every language version.
+              <Link
                 key={loc}
-                onClick={() => switchLocale(loc)}
+                href={pathname}
+                locale={loc}
+                replace
+                prefetch={false}
+                hrefLang={loc}
+                lang={loc}
+                aria-current={isActive ? "true" : undefined}
+                onClick={() => setOpen(false)}
                 className={cn(
                   "w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors",
                   isActive
@@ -85,7 +83,7 @@ export function LanguageSwitcher() {
                 <Image src={info.src} alt="" width={20} height={15} className="size-5 object-cover rounded-sm" />
                 <span>{info.label}</span>
                 {isActive && <span className="ms-auto size-1.5 rounded-full bg-blue-600" />}
-              </button>
+              </Link>
             )
           })}
         </div>
